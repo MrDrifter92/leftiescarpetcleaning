@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lefties Carpet Cleaning | A Spotless Revival | Hervey Bay</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0071B6;
+            --light-blue-glow: rgba(0, 140, 255, 0.6);
+            --dark-bg: #0D1117; /* GitHub dark mode style */
+            --mid-dark-bg: #161B22;
+            --light-text: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+        }
+
+        /* New Deep Liquid Glass Effect */
+        .deep-glass {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.4), rgba(17, 24, 39, 0.6));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem; /* Rounded corners */
+            box-shadow: 
+                0 0 20px rgba(0, 140, 255, 0.1),
+                inset 0 2px 2px rgba(255, 255, 255, 0.05),
+                inset 0 -2px 2px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .deep-glass:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 0 30px rgba(0, 140, 255, 0.3),
+                inset 0 2px 2px rgba(255, 255, 255, 0.1),
+                inset 0 -2px 2px rgba(0, 0, 0, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* New Button Style */
+        .glass-button {
+             background: linear-gradient(145deg, rgba(0, 113, 182, 0.6), rgba(0, 80, 130, 0.8));
+             border: 1px solid rgba(0, 140, 255, 0.3);
+             border-radius: 9999px;
+             color: white;
+             font-weight: bold;
+             text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+             box-shadow: 
+                0 0 15px rgba(0, 140, 255, 0.2),
+                inset 0 1px 1px rgba(255, 255, 255, 0.15);
+             transition: all 0.3s ease;
+        }
+        .glass-button:hover, .glass-button:disabled {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                0 0 30px 5px var(--light-blue-glow),
+                inset 0 1px 1px rgba(255, 255, 255, 0.2);
+            background: linear-gradient(145deg, rgba(0, 123, 192, 0.7), rgba(0, 90, 140, 0.9));
+        }
+         .glass-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* Video Background Styling */
+        .video-background-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .video-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, var(--dark-bg), transparent, var(--dark-bg));
+            opacity: 0.8;
+            z-index: 2;
+        }
+        .video-content {
+            position: relative;
+            z-index: 3;
+        }
+        .loader {
+            width: 2rem;
+            height: 2rem;
+            border: 4px solid rgba(0, 140, 255, 0.3);
+            border-top-color: #3b82f6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* NEW Static Radiating Glow Effect */
+        .hero-logo-glow {
+            filter: drop-shadow(0 0 15px rgba(0, 140, 255, 0.4)) 
+                    drop-shadow(0 0 45px rgba(0, 140, 255, 0.2));
+            transition: filter 0.3s ease-in-out;
+        }
+        .hero-logo-glow:hover {
+            filter: drop-shadow(0 0 25px rgba(0, 140, 255, 0.6)) 
+                    drop-shadow(0 0 60px rgba(0, 140, 255, 0.4));
+        }
+
+        /* NEW Floating Bubbles */
+        .bubble-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .bubble {
+            position: absolute;
+            background-color: rgba(0, 140, 255, 0.1);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 140, 255, 0.2);
+            animation: float 20s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            25% { opacity: 1; }
+            50% { transform: translateY(-100px) scale(1.1); }
+            75% { opacity: 1; }
+            100% { transform: translateY(-200px) scale(1); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="deep-glass sticky top-0 z-50 m-2 md:m-4">
+        <nav class="container mx-auto px-6 py-2 flex justify-between items-center">
+            <a href="#home">
+                <img src="core-logo-transparent.png" alt="Lefties Logo" class="h-16 w-auto">
+            </a>
+            <div class="hidden md:flex space-x-8 font-bold">
+                <a href="#services" class="text-gray-300 hover:text-white transition-colors">Services</a>
+                <a href="#commercial" class="text-gray-300 hover:text-white transition-colors">Commercial</a>
+                <a href="#gallery" class="text-gray-300 hover:text-white transition-colors">Our Work</a>
+                <a href="#why-us" class="text-gray-300 hover:text-white transition-colors">Why Us?</a>
+            </div>
+            <a href="#quote" class="glass-button px-6 py-3 text-sm">
+                Get a Quote
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        
+        <!-- Hero Section -->
+        <section id="home" class="relative py-20 md:py-32 overflow-hidden">
+            <div class="bubble-container">
+                <div class="bubble" style="width: 50px; height: 50px; bottom: 10%; left: 15%; animation-duration: 25s;"></div>
+                <div class="bubble" style="width: 100px; height: 100px; bottom: 20%; right: 10%; animation-duration: 18s; animation-delay: 3s;"></div>
+                <div class="bubble" style="width: 30px; height: 30px; bottom: 5%; left: 40%; animation-duration: 30s; animation-delay: 1s;"></div>
+                <div class="bubble" style="width: 80px; height: 80px; bottom: 30%; left: 5%; animation-duration: 22s; animation-delay: 5s;"></div>
+            </div>
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <div class="mb-8">
+                    <!-- Added hero-logo-glow class -->
+                    <img src="core-logo-blue-transparent.png" alt="Lefties Logo" class="w-96 md:w-[32rem] h-auto mx-auto hero-logo-glow">
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-black text-white leading-tight">
+                    Not just clean. <span class="text-blue-400">Revived.</span>
+                </h1>
+                <p class="mt-4 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+                    We get the deep-down dirt, stains, and stories out of carpets, rugs, and lounges across Hervey Bay.
+                </p>
+                <div class="mt-8">
+                    <a href="#quote" class="glass-button px-8 py-4 text-lg inline-block">
+                        Get Your Revival Started
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Pillars Section -->
+        <section id="trust" class="py-16 bg-mid-dark-bg relative overflow-hidden">
+             <div class="bubble-container">
+                <div class="bubble" style="width: 120px; height: 120px; top: 10%; right: -5%; animation-duration: 28s;"></div>
+                <div class="bubble" style="width: 60px; height: 60px; bottom: 15%; left: -2%; animation-duration: 20s; animation-delay: 4s;"></div>
+            </div>
+            <div class="container mx-auto px-6 relative">
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="deep-glass p-8">
+                        <h3 class="text-2xl font-bold text-blue-400">Honest Quotes</h3>
+                        <p class="mt-2 text-gray-300">The price we say is the price you pay. If we find something unexpected, we talk to you first.</p>
+                    </div>
+                    <div class="deep-glass p-8">
+                        <h3 class="text-2xl font-bold text-blue-400">The Job Done Right</h3>
+                        <p class="mt-2 text-gray-300">We don't cut corners. We use the right gear and the right methods to get a proper, deep clean.</p>
+                    </div>
+                    <div class="deep-glass p-8">
+                        <h3 class="text-2xl font-bold text-blue-400">Local. Zero Bullshit.</h3>
+                        <p class="mt-2 text-gray-300">We're your local Hervey Bay crew. We show up on time, respect your space, and give you honest advice.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Us Section with Dog Video Background -->
+        <section id="why-us" class="py-20 video-background-container">
+            <video autoplay loop muted playsinline class="video-background" poster="Core-logo.png">
+                <source src="Dog-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay"></div>
+            <div class="container mx-auto px-6 text-center video-content">
+                 <img src="core-logo-transparent.png" alt="Lefties Carpet Cleaning Logo" class="w-48 h-auto md:w-64 md:h-auto mx-auto mb-12">
+                <h2 class="text-4xl font-black text-white">We're the guys you call when you want it done properly.</h2>
+                <div class="max-w-3xl mx-auto text-lg text-gray-300 space-y-4 mt-6">
+                    <p>Lefties isn't a big, faceless franchise. We're a local Hervey Bay business, and we genuinely care about the results we deliver.</p>
+                    <p class="font-bold text-blue-400">We show up when we say we will, we treat your home with respect, and we stand behind the quality of our clean. It's that simple.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-20 bg-mid-dark-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-black text-white">The Proof is in the Revival</h2>
+                    <p class="mt-2 text-lg text-gray-400">A few recent wins.</p>
+                </div>
+                <!-- Expanded Gallery Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <div class="rounded-2xl shadow-2xl overflow-hidden border border-gray-800"><img src="before-after.png" alt="Before and after of upholstery cleaning" class="w-full h-auto"></div>
+                    <div class="rounded-2xl shadow-2xl overflow-hidden border border-gray-800"><img src="Before-after-2.png" alt="Before and after of carpet cleaning" class="w-full h-auto"></div>
+                    <div class="rounded-2xl shadow-2xl overflow-hidden border border-gray-800"><img src="Before-after-3.png" alt="Before and after of rug cleaning" class="w-full h-auto"></div>
+                    <div class="rounded-2xl shadow-2xl overflow-hidden border border-gray-800"><img src="Before-after-4.png" alt="Before and after of stain removal" class="w-full h-auto"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- "Our Promise" Section with Flyer -->
+        <section id="promise" class="py-20 bg-dark-bg">
+            <div class="container mx-auto px-6 flex justify-center">
+                <img src="flyer.png" alt="Our Promise Flyer" class="max-w-sm md:max-w-md rounded-2xl shadow-2xl">
+            </div>
+        </section>
+
+        <!-- NEW Commercial Section -->
+        <section id="commercial" class="py-20 bg-mid-dark-bg border-y border-gray-800 relative overflow-hidden">
+            <div class="bubble-container">
+                <div class="bubble" style="width: 200px; height: 200px; top: 50%; left: -100px; animation-duration: 35s;"></div>
+                <div class="bubble" style="width: 150px; height: 150px; top: 10%; right: -80px; animation-duration: 25s; animation-delay: 2s;"></div>
+            </div>
+            <div class="container mx-auto px-6 text-center relative">
+                <h2 class="text-4xl font-black text-white">Commercial & Real Estate</h2>
+                <p class="mt-4 text-lg text-gray-300 max-w-3xl mx-auto">
+                    Are you a real estate agent or a residential aged care facility? We are fully licensed and insured to sort out your ongoing programmed maintenance schedule.
+                </p>
+                <div class="mt-8">
+                    <a href="#quote" class="glass-button px-8 py-4 text-lg inline-block">
+                        Discuss Your Needs
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Quote Estimator Section -->
+        <section id="quote-estimator" class="py-20 bg-dark-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-black text-white">Get a Quick Estimate ✨</h2>
+                    <p class="mt-2 text-lg text-gray-400 max-w-2xl mx-auto">Describe the rooms you need cleaned and we'll give you a rough idea of the cost. No obligation, mate.</p>
+                </div>
+                <div class="max-w-2xl mx-auto deep-glass p-8">
+                    <div class="space-y-4">
+                        <textarea id="job-description" rows="3" class="w-full p-3 rounded-lg bg-gray-900/50 border border-gray-700 text-white focus:ring-2 focus:ring-primary-blue focus:outline-none" placeholder="e.g., 3 bedrooms, one large lounge room with a rug, and a hallway. A couple of pet stains on the rug."></textarea>
+                        <div class="flex justify-end">
+                             <button id="get-estimate-btn" class="glass-button px-6 py-3 text-sm">Estimate My Job ✨</button>
+                        </div>
+                    </div>
+                    <div id="estimate-result" class="mt-6 min-h-[100px] bg-gray-900/50 rounded-lg p-6 flex items-center justify-center border border-gray-800">
+                        <p class="text-gray-400">Your rough estimate will appear here.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stain Solver Section -->
+        <section id="stain-solver" class="py-20 bg-mid-dark-bg border-y border-gray-800">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-black text-white">Stain Solver ✨</h2>
+                    <p class="mt-2 text-lg text-gray-400 max-w-2xl mx-auto">Had a spill? Describe the stain and what it's on. For best results, upload a photo.</p>
+                </div>
+                <div class="max-w-2xl mx-auto deep-glass p-8">
+                    <div class="space-y-4">
+                        <textarea id="stain-description" rows="3" class="w-full p-3 rounded-lg bg-gray-900/50 border border-gray-700 text-white focus:ring-2 focus:ring-primary-blue focus:outline-none" placeholder="e.g., red wine spill on light beige carpet"></textarea>
+                        <div class="flex items-center justify-between">
+                             <input type="file" id="stain-image" accept="image/*" class="text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-900/50 file:text-blue-300 hover:file:bg-blue-800/50">
+                             <button id="get-advice-btn" class="glass-button px-6 py-3 text-sm">Get Advice ✨</button>
+                        </div>
+                    </div>
+                    <div id="advice-result" class="mt-6 min-h-[100px] bg-gray-900/50 rounded-lg p-6 flex items-center justify-center border border-gray-800">
+                        <p class="text-gray-400">Your stain first-aid advice will appear here.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Quote/Contact Section -->
+        <section id="quote" class="py-20 bg-dark-bg relative overflow-hidden">
+             <div class="bubble-container">
+                <div class="bubble" style="width: 250px; height: 250px; bottom: -100px; left: -100px; animation-duration: 40s;"></div>
+                <div class="bubble" style="width: 180px; height: 180px; top: -50px; right: -80px; animation-duration: 30s; animation-delay: 5s;"></div>
+            </div>
+             <div class="container mx-auto px-6 text-center relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black text-white">Ready to Clean Your Carpet and Upholstery?</h2>
+                <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-blue-200">
+                    Let's get it sorted. Message us with a photo of the job for a quick, honest quote, or just give us a call to chat about it.
+                </p>
+                <div class="mt-8 deep-glass p-8 max-w-lg mx-auto">
+                    <p class="text-2xl font-bold text-white">Call or Text:</p>
+                    <a href="tel:0417220012" class="text-4xl font-black text-blue-400 my-2 block hover:text-blue-300 transition-colors">0417 220 012</a>
+                    <a href="mailto:Hello@leftiesclean.com.au" class="font-bold text-blue-400 my-2 block hover:text-blue-300 transition-colors">Hello@leftiesclean.com.au</a>
+                    <p class="text-lg text-blue-400 mt-2 font-semibold">Servicing Hervey Bay & Surrounds</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8">
+        <div class="container mx-auto px-6 text-center">
+             <img src="core-logo-transparent.png" alt="Lefties Logo" class="h-12 mx-auto mb-4 opacity-50">
+            <p class="text-sm text-gray-400">&copy; 2025 Lefties Carpet Cleaning. All Rights Reserved.</p>
+            <p class="text-xs text-gray-600 mt-1">ABN: [Your ABN Here] | Hervey Bay, QLD</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Gemini API Logic ---
+        const getAdviceBtn = document.getElementById('get-advice-btn');
+        const stainDescriptionInput = document.getElementById('stain-description');
+        const stainImageInput = document.getElementById('stain-image');
+        const adviceResultEl = document.getElementById('advice-result');
+
+        const getEstimateBtn = document.getElementById('get-estimate-btn');
+        const jobDescriptionInput = document.getElementById('job-description');
+        const estimateResultEl = document.getElementById('estimate-result');
+
+        const fileToGenerativePart = async (file) => {
+            const base64EncodedDataPromise = new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onloadend = () => resolve(reader.result.split(',')[1]);
+                reader.readAsDataURL(file);
+            });
+            return {
+                inlineData: { data: await base64EncodedDataPromise, mimeType: file.type },
+            };
+        };
+
+        const callGemini = async (prompt, imageFile, resultEl, buttonEl) => {
+            buttonEl.disabled = true;
+            resultEl.innerHTML = `<div class="loader mx-auto"></div>`;
+            
+            let chatHistory = [];
+            const userParts = [{ text: prompt }];
+
+            if (imageFile) {
+                try {
+                    const imagePart = await fileToGenerativePart(imageFile);
+                    userParts.push(imagePart);
+                } catch (error) {
+                    console.error('Error processing image:', error);
+                    resultEl.innerHTML = `<p class="text-red-500">There was an error reading the image file.</p>`;
+                    buttonEl.disabled = false;
+                    return;
+                }
+            }
+            
+            chatHistory.push({ role: "user", parts: userParts });
+
+            const payload = { contents: chatHistory };
+            const apiKey = "";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) throw new Error(`API Error: ${response.status}`);
+                
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates[0].content && result.candidates[0].content.parts[0].text) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    const formattedText = text.replace(/\n/g, '<br>').replace(/\*/g, '');
+                    resultEl.innerHTML = `<p class="text-left text-gray-300">${formattedText}</p>`;
+                } else {
+                    throw new Error('Unexpected API response structure');
+                }
+            } catch (error) {
+                console.error('Error calling Gemini API:', error);
+                resultEl.innerHTML = `<p class="text-red-500">Sorry, mate. Couldn't get a response right now. Please try again.</p>`;
+            } finally {
+                buttonEl.disabled = false;
+            }
+        };
+
+        // Stain Solver Event Listener
+        getAdviceBtn.addEventListener('click', () => {
+            const description = stainDescriptionInput.value;
+            if (!description) {
+                adviceResultEl.innerHTML = `<p class="text-red-500">Please describe the stain first.</p>`;
+                return;
+            }
+            const prompt = `You are "Lefties," a friendly, no-nonsense carpet cleaning expert from Hervey Bay, Australia. Your tone is helpful, honest, and a bit cheeky. A customer has a stain. Their description is: "${description}". Provide simple, safe, step-by-step first-aid advice. Start with what to do immediately. Include a "What NOT to do" section. Be honest if it sounds like a job for a professional. If they provided an image, use it to be more specific.`;
+            callGemini(prompt, stainImageInput.files[0], adviceResultEl, getAdviceBtn);
+        });
+
+        // Quote Estimator Event Listener
+        getEstimateBtn.addEventListener('click', () => {
+            const description = jobDescriptionInput.value;
+            if (!description) {
+                estimateResultEl.innerHTML = `<p class="text-red-500">Please describe the job first.</p>`;
+                return;
+            }
+            const prompt = `You are "Lefties," a friendly, no-nonsense carpet cleaning expert from Hervey Bay, Australia. A customer wants a rough price estimate. Their job description is: "${description}". Based on this, provide a simple, itemized, non-binding estimate. Use these prices: Standard Bedroom: $50, Lounge Room: $80, Hallway: $30, Rug: $40, Stairs: $3 per step. Add a small surcharge for "pet stains" or "heavy soiling". Start with a friendly greeting. End by stating clearly this is just an estimate and they should call for a firm quote. Keep the tone helpful and honest.`;
+            callGemini(prompt, null, estimateResultEl, getEstimateBtn);
+        });
+    </script>
+
+</body>
+</html>
